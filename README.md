@@ -1,36 +1,56 @@
+# Guessing Dice Game 🎲
+
+A simple command-line game where you try to guess the outcome of a rolled dice. Perfect for practicing basic programming and having some fun!
+
+## How to Play
+
+1. The computer rolls a six-sided dice (numbers 1–6).
+2. You guess what number the dice will show.
+3. If your guess is correct, you win!
+4. If not, you can try again or quit.
+
+## Features
+
+- Random dice roll simulation
+- User input for guesses
+- Tracks attempts
+- Simple, beginner-friendly code
+
+## Example Code (Python)
+
+```python
 import random
 
-def roll_dice(sides=6):
-    return random.randint(1, sides)
-
-def main():
-    print("Welcome to the Dice Guessing Game!")
-    score = 0
-    rounds = 0
-
+def guessing_dice_game():
+    print("Welcome to the Guessing Dice Game!")
+    attempts = 0
     while True:
-        guess = input("Guess the dice roll (1-6), or 'q' to quit: ").strip()
+        dice = random.randint(1, 6)
+        guess = input("Guess the dice roll (1-6) or 'q' to quit: ")
         if guess.lower() == 'q':
+            print("Thanks for playing!")
             break
-
-        if not guess.isdigit() or not 1 <= int(guess) <= 6:
-            print("Invalid input! Please enter a number between 1 and 6, or 'q' to quit.")
-            continue
-
-        guess = int(guess)
-        result = roll_dice()
-        print(f"The dice rolled: {result}")
-
-        if guess == result:
-            print("Congratulations! You guessed correctly.")
-            score += 1
+        attempts += 1
+        if int(guess) == dice:
+            print(f"Congratulations! You guessed correctly in {attempts} tries.")
+            break
         else:
-            print("Sorry, that's not correct.")
-
-        rounds += 1
-        print(f"Current score: {score}\n")
-
-    print(f"Thanks for playing! You played {rounds} rounds and scored {score} points.")
+            print(f"Wrong! The dice showed {dice}. Try again.")
 
 if __name__ == "__main__":
-    main()
+    guessing_dice_game()
+```
+
+## Getting Started
+
+1. Copy the Python code above into a file (e.g., `dice_game.py`).
+2. Run the game with `python dice_game.py`.
+3. Follow the on-screen instructions.
+
+## Contributing
+
+Feel free to fork the repo and submit pull requests for improvements or alternative versions in other languages!
+
+## License
+
+This project is open source under the MIT License.
